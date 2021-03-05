@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Category;
+namespace App\Http\Requests\Section;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -24,19 +24,17 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombre'=>'required|string|max:50',
-            'section_id'=>'integer|required',
+            'nombre'=>'required|string|max:50';
         ];
     }
 
 
     public function messages()
     {
-        'nombre.required'=>'Este campo es requerido',
-        'nombre.string'=>'Este campo debe ser tipo string',
-        'nombre.max'=>'Este campo solo acepta 50 carateres',
-
-        'section_id.integer'=>'Este campo debe ser un integer',
-        'section_id.required'=>'Este campo es requerido',
+        return[
+            'nombre.required'=>'Este campo es requerido',
+            'nombre.string'=>'Este campo debe de ser tipo string',
+            'nombre.max'=>'Este campo tiene un maximo de 50 caracteres validos',
+        ];
     }
 }
