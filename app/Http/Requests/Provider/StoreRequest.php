@@ -25,48 +25,41 @@ class StoreRequest extends FormRequest
     {
         return [
             'nombre'=>'required|string|max:50',
-            'rtn'=>'int|max:15|unique:providers',
+            'rtn'=>'max:16|unique:providers',
             'contacto'=>'required|string|max:50',
-            'pais'=>'string|max:255',
-            'ciudad'=>'string|max:255',
-            'direccion'=>'string|max:255',
-            'correo'=>'required|mail|string|unique:providers',
-            'telefono'=>'required|int|max:15|unique:providers',
+            'pais'=>'max:255',
+            'ciudad'=>'max:255',
+            'direccion'=>'max:255',
+            'correo'=>'required|email:rfc,dns',
+            'telefono'=>'required|max:15',
         ];
     }
 
     public function messages()
     {
-        'nombre.required'=>'Este campo es requerido',
-        'nombre.string'=>'Este campo debe ser tipo string',
-        'nombre.max'=>'Este campo solo acepta 50 caracteres',
+            return[
+            'nombre.required'=>'Este campo es requerido',
+            'nombre.string'=>'Este campo debe ser tipo string',
+            'nombre.max'=>'Este campo solo acepta 50 caracteres',
 
-        'rtn.int'=>'Este campo debe ser tipo int',
-        'rtn.max'=>'Este campo solo acepta 15 caracteres',
-        'rtn.unique'=>'Ya existe un proveedor con este RTN!',
+            'rtn.max'=>'Este campo solo acepta 15 caracteres',
+            'rtn.unique'=>'Este RTN coincide con otro',
 
-        'contacto.required'=>'Este campo es requerido',
-        'contacto.string'=>'Este campo debe ser tipo string',
-        'contacto.max'=>'Este campo solo acepta 50 caracteres',
+            'contacto.required'=>'Este campo es requerido',
+            'contacto.string'=>'Este campo debe ser tipo string',
+            'contacto.max'=>'Este campo solo acepta 50 caracteres',
 
-        'pais.string'=>'Este campo debe ser tipo string',
-        'pais.max'=>'Este campo solo acepta 255 caracteres',
+            'pais.max'=>'Este campo solo acepta 255 caracteres',
 
-        'ciudad.string'=>'Este campo debe ser tipo string',
-        'ciudad.max'=>'Este campo solo acepta 255 caracteres',
+            'ciudad.max'=>'Este campo solo acepta 255 caracteres',
 
-        'direccion.string'=>'Este campo debe ser tipo string',
-        'direccion.max'=>'Este campo solo acepta 255 caracteres',
+            'direccion.max'=>'Este campo solo acepta 255 caracteres',
 
-        'correo.required'=>'Este campo es requerido',
-        'correo.mail'=>'Este campo debe tener formato de correo',
-        'correo.string'=>'Este campo debe ser tipo string',
-        'correo.unique'=>'Ya existe un proveedor con este correo!',
+            'correo.required'=>'Este campo es requerido',
+            'correo.email'=>'Este campo debe tener formato de correo',
 
-        'telefono.required'=>'Este campo es requerido',
-        'telefono.int'=>'Este campo debe ser tipo int',
-        'telefono.max'=>'Este campo solo acepta 15 caracteres',
-        'telefono.unique'=>'Ya existe un proveedor con este numero de telefono!',
-
+            'telefono.required'=>'Este campo es requerido',
+            'telefono.max'=>'Este campo solo acepta 15 caracteres',
+        ];
     }
 }

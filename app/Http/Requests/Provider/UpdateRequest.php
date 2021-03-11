@@ -25,23 +25,24 @@ class UpdateRequest extends FormRequest
     {
         return [
             'nombre'=>'required|string|max:50',
-            'rtn'=>'int|unique:providers,rtn,'.$this->route('provider')->id.'|max:15',
+            'rtn'=>'string|unique:providers,rtn,'.$this->route('provider')->id.'|max:15',
             'contacto'=>'required|string|max:50',
             'pais'=>'string|max:255',
             'ciudad'=>'string|max:255',
             'direccion'=>'string|max:255',
-            'correo'=>'required|mail|string|unique:providers,email,'.$this->route('provider')->id,
-            'telefono'=>'required|int|unique:providers,telefono,'.$this->route('provider')->id.'|max:15',
+            'correo'=>'required|email:rfc,dns|string|unique:providers,email,'.$this->route('provider')->id,
+            'telefono'=>'required|string|unique:providers,telefono,'.$this->route('provider')->id.'|max:15',
         ];
     }
 
     public function messages()
     {
+        return[
         'nombre.required'=>'Este campo es requerido',
         'nombre.string'=>'Este campo debe ser tipo string',
         'nombre.max'=>'Este campo solo acepta 50 caracteres',
 
-        'rtn.int'=>'Este campo debe ser tipo int',
+        'rtn.string'=>'Este campo debe ser tipo string',
         'rtn.max'=>'Este campo solo acepta 15 caracteres',
         'rtn.unique'=>'Ya existe un proveedor con este RTN!',
 
@@ -59,14 +60,14 @@ class UpdateRequest extends FormRequest
         'direccion.max'=>'Este campo solo acepta 255 caracteres',
 
         'correo.required'=>'Este campo es requerido',
-        'correo.mail'=>'Este campo debe tener formato de correo',
+        'correo.email'=>'Este campo debe tener formato de correo',
         'correo.string'=>'Este campo debe ser tipo string',
         'correo.unique'=>'Ya existe un proveedor con este correo!',
 
         'telefono.required'=>'Este campo es requerido',
-        'telefono.int'=>'Este campo debe ser tipo int',
+        'telefono.string'=>'Este campo debe ser tipo string',
         'telefono.max'=>'Este campo solo acepta 15 caracteres',
         'telefono.unique'=>'Ya existe un proveedor con este numero de telefono!',
-
+    ];
     }
 }

@@ -23,7 +23,7 @@ class ProviderController extends Controller
     public function store(StoreRequest $request)
     {
         Provider::create($request->all());
-        return redirect()->route('providers.index');
+        return redirect()->route('admin.provider.index');
     }
 
     public function show(Provider $provider)

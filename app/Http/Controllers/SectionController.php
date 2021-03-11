@@ -23,7 +23,7 @@ class SectionController extends Controller
     public function store(StoreRequest $request)
     {
         Section::create($request->all());
-        return redirect()->route('sections.index');
+        return redirect()->route('admin.section.index');
     }
 
     public function show(Section $section)
@@ -39,12 +39,12 @@ class SectionController extends Controller
     public function update(UpdateRequest $request, Section $section)
     {
         $section->update($request->all());
-        return redirect()->route('sections.index');
+        return redirect()->route('admin.section.index');
     }
 
     public function destroy(Section $section)
     {
         $section->delete();
-        return redirect()->route('sections.index');
+        return redirect()->route('admin.section.index');
     }
 }

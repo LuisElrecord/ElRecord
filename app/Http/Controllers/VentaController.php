@@ -13,7 +13,7 @@ class VentaController extends Controller
     public function index()
     {
         $ventas = Venta::get();
-        return view('admin.venta.index',compact('ventas'))
+        return view('admin.venta.index',compact('ventas'));
     }
 
     public function create()
